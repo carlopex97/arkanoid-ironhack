@@ -6,9 +6,9 @@ html, body {
     background: black;
   }
   canvas {
-    border: 2px solid white;
-    border-radius: 4px;
+    background: #eee;
     display: none;
+    margin: 0 auto;
   }
   h1{
     color: white;
