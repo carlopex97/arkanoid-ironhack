@@ -2,10 +2,10 @@ class Game {
   constructor(ctx) {
     this.ctx = ctx;
     this.interval = null;
-    //this.background="./resources/background.png"
     this.brick = new BrickWall(ctx);
     this.paddle = new Paddle(ctx);
     this.ball = new Ball(ctx);
+    this.background = new Background(ctx);
   }
 
   start() {
@@ -14,7 +14,6 @@ class Game {
 
     this.interval = setInterval(() => {
       this.clear();
-      //this.drawBackground();
       this.draw();
       this.collisions();
       this.move();
@@ -34,15 +33,16 @@ class Game {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
   }
   draw() {
+    this.background.draw();
     //this.brick.drawBrick()
     this.paddle.draw();
     this.ball.draw();
+    
   }
-  /*drawBackground(){
-    this.ctx.drawImage(this.background, 0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-  }*/
+  
   move() {
     this.paddle.move();
+    this.ball.move();
   }
   collisions() {}
 }
