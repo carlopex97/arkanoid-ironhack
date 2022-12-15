@@ -1,16 +1,24 @@
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: black;
-  }
-  canvas {
-    background: #eee;
-    display: none;
-    margin: 0 auto;
-  }
-  h1{
-    color: white;
-    text-align: center;
-  }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+canvas {
+  background: #eee;
+  display: none;
+  margin: 0 auto;
+  background-image: "../resources/background.png";
+}
+
+.game-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  color: white;
+  text-align: center;
+}
