@@ -6,10 +6,18 @@ class Background {
     this.x = 0;
     this.y = 0;
     this.background = new Image();
-    this.background.src = "../resources/background1.webp";
+    this.background.src = "/resources/background.png";
+    this.background.onload = () => {
+      this.backgroundPattern = this.ctx.createPattern(this.background, 'repeat');
+    }
   }
+
   draw() {
-    this.ctx.drawImage(this.background, this.x, this.y, this.w, this.h);
-    this.ctx.drawImage(this.background, this.x + this.w, this.y, this.w, this.h);
+    
+    this.ctx.save();
+    this.ctx.fillStyle = this.backgroundPattern;
+    this.ctx.fillRect(this.x, this.y, this.w, this.h);
+    this.ctx.restore();
+    
   }
 }

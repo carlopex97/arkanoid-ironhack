@@ -1,18 +1,26 @@
 class Paddle {
   constructor(ctx) {
     this.ctx = ctx;
-    this.h = 10;
-    this.w = 75;
+    this.h = 15;
+    this.w = 80;
+    this.y = this.ctx.canvas.height - (this.h + 20);
     this.x = (this.ctx.canvas.width - this.w) / 2;
     this.vx = 0;
+    this.type = "paddle";
+    this.image = new Image();
+    this.image.src = '/resources/paddle.png';
   }
+
   draw() {
-    this.ctx.beginPath();
-    this.ctx.rect(this.x, this.ctx.canvas.height - this.h, this.w, this.h);
-    this.ctx.fillStyle = "#0095DD";
-    this.ctx.fill();
-    this.ctx.closePath();
+    this.ctx.save();
+    if (DEBUG){
+      this.ctx.strokeStyle = "red"
+      this.ctx.strokeRect(this.x, this.y, this.w, this.h)
+    }
+    this.ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+    this.ctx.restore();
   }
+  
   move() {
     this.x += this.vx;
     if (this.x <= 0) {

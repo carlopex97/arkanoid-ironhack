@@ -1,33 +1,32 @@
-class BrickWall{
-    constructor(ctx){
-        /*this.brickRowCount = 3;
-        this.brickColumnCount = 5;
-        this.brickWidth = 75;
-        this.brickHeight = 20;
-        this.brickPadding = 10;
-        this.brickOffsetTop = 30;
-        this.brickOffsetLeft = 30;
+class Brick {
+    constructor(ctx, x, y) {
+      this.ctx = ctx;
+      this.x = x;
+      this.y = y;
+      this.h = 20;
+      this.w = 50;
+      this.type = "brick";
+      this.images = ["/resources/blue.png", "/resources/red.png", "/resources/yellow.png", "/resources/green.png", "/resources/gray.png", "/resources/light_blue.png", "/resources/orange.png", "/resources/pink.png"];
+      this.active = true;
+      this.image = new Image();
+      this.image.src = this.images[this.randomImage()];
     }
-    drawBrick(){
-        for(c=0; c<brickColumnCount; c++) {
-            for(r=0; r<brickRowCount; r++) {
-                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-                bricks[c][r].x = brickX;
-                bricks[c][r].y = brickY;
-                ctx.beginPath();
-                ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "red";
-                ctx.fill();
-                ctx.closePath();
-            }
-        }*/
+  
+    randomImage() {
+      return Math.floor(Math.random() * this.images.length);
     }
-    clear(){
-        
+  
+    draw() {
+        if (DEBUG){
+            this.ctx.strokeStyle = "red"
+            this.ctx.strokeRect(this.x, this.y, this.w, this.h)
+          }
+      if (this.active) {
+        this.ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+      }
     }
-
-    
-    
-    
+  
+    destroy() {
+      this.active = false;
     }
+  }
